@@ -1,0 +1,25 @@
+<import src="movie-list/movie-list-template.wxml" />
+<import src="movie-grid/movie-grid-template.wxml" />
+<view class='search'>
+  <icon type='search' size="13" color='#405f80'></icon>
+   <input type='text' placeholder='南方车站的聚会' placeholder-class='placehoder' bindfocus='onBindFocus' bindconfirm="onBindfirm"/>
+    <!-- x图片 -->
+   <image wx:if="{{searchPanelShow}}" class='xx-img' src="/images/icon/xx.png" bindtap='onCancelImgTap'></image>
+</view>
+<view class='container' wx:if="{{containerShow}}">
+  <view class='movies-template'>
+    <template is="movieListTemplate" data="{{...inTheaters}}"/>
+  </view>
+  <view class='movies-template'>
+    <template is="movieListTemplate" data="{{...comingSoon}}"/>
+  </view>
+  <view class='movies-template'>
+    <template is="movieListTemplate" data="{{...top250}}"/>
+  </view>
+</view>
+
+
+<view class='search-panel' wx:if="{{searchPanelShow}}">
+  <template is="movieGridTemplate" data="{{...searchResult}}" />
+</view>
+
